@@ -19,3 +19,24 @@ jobs:
           context: ./backend-application  # Set the context to the Project 1 directory
           push: true
           tags: clipbook/demo-backend-app:latest
+
+
+
+  gke-connect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.1
+
+      - name: Authenticate with ADC
+        run: |
+          echo $GCLOUD_PASSWORD | base64 --decode > /tmp/gcloud_key.json
+          gcloud auth activate-service-account $GCLOUD_EMAIL --key-file=/tmp/gcloud_key.json
+
+      - name: Authenticate with GKE Cluster
+        run: |
+          gcloud container clusters get-credentials autopilot-cluster-1 --region asia-south2 --project ambient-stack-376816
+          kubectl cluster-info
