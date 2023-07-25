@@ -33,7 +33,7 @@ jobs:
 
       - name: Authenticate with ADC
         run: |
-          echo $GCLOUD_PASSWORD | base64 --decode > /tmp/gcloud_key.json
+          echo $GCLOUD_PASSWORD | base64 --decode >> /tmp/gcloud_key.json
           gcloud auth activate-service-account $GCLOUD_EMAIL --key-file=/tmp/gcloud_key.json
 
       - name: Authenticate with GKE Cluster
