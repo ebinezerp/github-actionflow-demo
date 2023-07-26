@@ -39,4 +39,4 @@ jobs:
           export USE_GKE_GCLOUD_AUTH_PLUGIN=True
           gcloud components install gke-gcloud-auth-plugin
           gcloud container clusters get-credentials autopilot-cluster-1 --region asia-south2 --project ambient-stack-376816
-          kubectl cluster-info
+          kubectl apply -f ./kubernetes/backend-deployment.yaml
