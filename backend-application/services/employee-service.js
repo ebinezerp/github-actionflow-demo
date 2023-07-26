@@ -12,7 +12,6 @@ class EmployeeService {
         logger.info("EmployeeService, addEmployee()");
         try {
             await this.empCollection.add(employee);
-            return {}
         } catch (err) {
             if (err.code) {
                 throw new BaseException(err.code, err.message)

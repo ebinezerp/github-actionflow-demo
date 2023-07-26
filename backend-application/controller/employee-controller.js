@@ -10,9 +10,11 @@ exports.addEmployee = async (req,res,next) => {
     const employee = req.body;
     try {
         await employeeService.addEmployee(employee);
-        return res.status(200).send(generateResponse('SUCCESS',undefined, ))
+        return res.status(200).send(generateResponse('SUCCESS',undefined, "ADDED"))
     }catch (err){
-
+        logger.error(err);
+        if(err.code){
+            return res.status(err.code).send(generateResponse("FAILURE", err, null));
+        }
     }
-
 }
