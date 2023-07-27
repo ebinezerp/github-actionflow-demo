@@ -23,6 +23,7 @@ jobs:
 
 
   gke-connect:
+    needs: [backend-deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

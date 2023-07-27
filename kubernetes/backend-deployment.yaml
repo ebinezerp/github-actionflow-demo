@@ -29,7 +29,7 @@ spec:
                 name: backend-env-data
       imagePullSecrets:
         - name: regcred
-          
+
       volumes:
         - name: gsa-key-volume
           secret:
