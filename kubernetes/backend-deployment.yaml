@@ -17,8 +17,20 @@ spec:
       containers:
         - name: backend-app
           image: clipbook/demo-backend-app
+          volumeMounts:
+            - name: gsa-key-volume
+              mountPath: ./cloud-key.json
+              subPath: key.json
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: ./cloud-key.json
           envFrom:
             - secretRef:
                 name: backend-env-data
       imagePullSecrets:
         - name: regcred
+          
+      volumes:
+        - name: gsa-key-volume
+          secret:
+            secretName: my-gsa-key
