@@ -3,6 +3,7 @@ const employeeRoutes = require("./routes/employee-routes");
 
 const app = express();
 
+app.use(express.json())
 
 app.use(employeeRoutes);
 

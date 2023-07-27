@@ -5,7 +5,11 @@ services:
       context: ./backend-application
       dockerfile: Dockerfile
     image: 'clipbook/demo-backend-app'
+    command: npm run start:local
     container_name: backend-app
+    volumes:
+      - /Users/ebinezer/personal-projects/github-actions-learning/backend-application:/app
+      - /app/node_modules
     ports:
       - '3500:8080'
     env_file:

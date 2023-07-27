@@ -11,7 +11,7 @@ class EmployeeService {
     async addEmployee(employee) {
         logger.info("EmployeeService, addEmployee()");
         try {
-            await this.empCollection.add(employee);
+            await this.empCollection.add(JSON.parse(JSON.stringify(employee)));
         } catch (err) {
             if (err.code) {
                 throw new BaseException(err.code, err.message)
