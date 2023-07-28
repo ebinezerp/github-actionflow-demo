@@ -5,6 +5,7 @@ const BaseException = require("../exceptions/BaseException");
 class EmployeeService {
 
     constructor() {
+        // adding comment
         this.empCollection = database.collection('employee');
     }
 
