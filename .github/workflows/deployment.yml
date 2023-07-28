@@ -14,8 +14,7 @@ jobs:
         with:
           path: |
             /root/.docker
-            ./backend-application # Replace with the path to your Dockerfile
-          key: docker-layers-${{ hashFiles('./backend-application') }}
+          key: docker-layers-${{ hashFiles('./backend-application/Dockerfile') }}
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
